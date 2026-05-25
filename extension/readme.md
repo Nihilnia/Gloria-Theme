@@ -6,7 +6,7 @@
 █   █ █   █ █████   █      █   █ █   █ ████      ███  █   █   █    ███  █   █    █     ███ █   █ █████
 ```
 
-<img src="https://github.com/nihilnia/gloria-theme/extension/theme/Gloria_Borderless.gif" alt="Gloria" width="100%">
+<img src="https://github.com/Nihilnia/Gloria-Theme/blob/main/extension/theme/Gloria_Borderless.gif" alt="Gloria" width="100%">
 
 ```
 # HALT AND CATCH FIRE (HCF):
