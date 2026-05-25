@@ -3,8 +3,8 @@
 		<Metadata>
 			<Identity Language="en-US" Id="gloria-theme" Version="1.0.0" Publisher="Nihil" />
 			<DisplayName>Gloria Theme</DisplayName>
-			<Description xml:space="preserve">I will make everything better. Everything.</Description>
-			<Tags>theme,color-theme</Tags>
+			<Description xml:space="preserve">A Gloria-inspired colour theme to satisfy your neon dreams</Description>
+			<Tags>retro,80s,theme,color-theme</Tags>
 			<Categories>Themes</Categories>
 			<GalleryFlags>Public</GalleryFlags>
 			
@@ -18,11 +18,11 @@
 				
 				<Property Id="Microsoft.VisualStudio.Code.ExecutesCode" Value="true" />
 				
-				<Property Id="Microsoft.VisualStudio.Services.Links.Source" Value="https://github.com/nihil/gloria-theme.git" />
-				<Property Id="Microsoft.VisualStudio.Services.Links.Getstarted" Value="https://github.com/nihil/gloria-theme.git" />
-				<Property Id="Microsoft.VisualStudio.Services.Links.GitHub" Value="https://github.com/nihil/gloria-theme.git" />
-				<Property Id="Microsoft.VisualStudio.Services.Links.Support" Value="https://github.com/nihil/gloria-theme/issues" />
-				<Property Id="Microsoft.VisualStudio.Services.Links.Learn" Value="https://github.com/nihil/gloria-theme#readme" />
+				<Property Id="Microsoft.VisualStudio.Services.Links.Source" Value="https://github.com/Nihilnia/Gloria-Theme.git" />
+				<Property Id="Microsoft.VisualStudio.Services.Links.Getstarted" Value="https://github.com/Nihilnia/Gloria-Theme.git" />
+				<Property Id="Microsoft.VisualStudio.Services.Links.GitHub" Value="https://github.com/Nihilnia/Gloria-Theme.git" />
+				<Property Id="Microsoft.VisualStudio.Services.Links.Support" Value="https://github.com/Nihilnia/Gloria-Theme/issues" />
+				<Property Id="Microsoft.VisualStudio.Services.Links.Learn" Value="https://github.com/Nihilnia/Gloria-Theme#readme" />
 				
 				
 				<Property Id="Microsoft.VisualStudio.Services.GitHubFlavoredMarkdown" Value="true" />
@@ -32,7 +32,7 @@
 				
 			</Properties>
 			<License>extension/LICENSE.txt</License>
-			<Icon>extension/theme/icon.jpg</Icon>
+			<Icon>extension/icon.jpg</Icon>
 		</Metadata>
 		<Installation>
 			<InstallationTarget Id="Microsoft.VisualStudio.Code"/>
@@ -42,6 +42,6 @@
 			<Asset Type="Microsoft.VisualStudio.Code.Manifest" Path="extension/package.json" Addressable="true" />
 			<Asset Type="Microsoft.VisualStudio.Services.Content.Details" Path="extension/readme.md" Addressable="true" />
 <Asset Type="Microsoft.VisualStudio.Services.Content.License" Path="extension/LICENSE.txt" Addressable="true" />
-<Asset Type="Microsoft.VisualStudio.Services.Icons.Default" Path="extension/theme/icon.jpg" Addressable="true" />
+<Asset Type="Microsoft.VisualStudio.Services.Icons.Default" Path="extension/icon.jpg" Addressable="true" />
 		</Assets>
 	</PackageManifest>
