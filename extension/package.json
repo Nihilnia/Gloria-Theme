@@ -1,0 +1,61 @@
+{
+	"name": "gloria-theme",
+	"displayName": "Gloria Theme",
+	"description": "I will make everything better. Everything.",
+	"version": "1.0.0",
+	"author": "Nihil",
+	"publisher": "Nihil",
+	"icon": "theme/icon.jpg",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/nihil/gloria-theme"
+	},
+	"engines": {
+		"vscode": "^1.33.0"
+	},
+	"extensionKind": [
+		"ui"
+	],
+	"categories": [
+		"Themes"
+	],
+	"activationEvents": [
+		"onCommand:gloria.enableNeon",
+		"onCommand:gloria.disableNeon"
+	],
+	"main": "./theme/src/extension.js",
+	"contributes": {
+		"themes": [
+			{
+				"label": "Gloria Theme",
+				"uiTheme": "vs-dark",
+				"path": "./theme/themes/gloria-color-theme.json"
+			}
+		],
+		"commands": [
+			{
+				"command": "gloria.enableNeon",
+				"title": "Gloria: Enable Glow"
+			},
+			{
+				"command": "gloria.disableNeon",
+				"title": "Gloria: Disable Glow"
+			}
+		],
+		"configuration": {
+			"title": "Gloria Theme",
+			"properties": {
+				"gloria.brightness": {
+					"type": "number",
+					"default": 0.45,
+					"description": "Set the brightness value for the glow effect. 0.0 is fully transparent and 1.0 is fully bright"
+				},
+				"gloria.disableGlow": {
+					"type": "boolean",
+					"default": false,
+					"description": "Disable the glow effect"
+				}
+			}
+		}
+	}
+}
