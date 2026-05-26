@@ -2,7 +2,7 @@
 	"name": "gloria-theme",
 	"displayName": "Gloria Theme",
 	"description": "I will make everything better. Everything.",
-	"version": "1.0.0",
+	"version": "1.0.4",
 	"author": "Nihil",
 	"publisher": "Nihil",
 	"icon": "icon.jpg",
@@ -24,8 +24,8 @@
 		"Themes"
 	],
 	"activationEvents": [
-		"onCommand:gloria.enableNeon",
-		"onCommand:gloria.disableNeon"
+		"onCommand:gloria.enableGlow",
+		"onCommand:gloria.disableGlow"
 	],
 	"main": "./src/extension.js",
 	"contributes": {
@@ -38,12 +38,12 @@
 		],
 		"commands": [
 			{
-				"command": "gloria.enableNeon",
-				"title": "Gloria: Enable Neon Dreams"
+				"command": "gloria.enableGlow",
+				"title": "Gloria: Enable Glow"
 			},
 			{
-				"command": "gloria.disableNeon",
-				"title": "Gloria: Disable Neon Dreams"
+				"command": "gloria.disableGlow",
+				"title": "Gloria: Disable Glow"
 			}
 		],
 		"configuration": {
