@@ -1,0 +1,141 @@
+{
+	// ── Appearance ─────────────────────────────────────────────
+	"workbench.colorTheme": "Gloria",
+	"workbench.iconTheme": "vscode-icons",
+	"workbench.reduceMotion": "on",
+
+	// ── Window ─────────────────────────────────────────────────
+	"window.commandCenter": false,
+	"window.title": "${activeEditorShort}${separator}${rootName}",
+	"window.titleSeparator": " — ",
+	"window.confirmBeforeClose": "keyboardOnly",
+
+	// ── Workbench layout & UI chrome ───────────────────────────
+	"workbench.activityBar.location": "bottom",
+	"workbench.secondarySideBar.defaultVisibility": "hidden",
+	"workbench.layoutControl.enabled": false,
+	"workbench.startupEditor": "none",
+	"workbench.tips.enabled": false,
+	"workbench.list.smoothScrolling": false,
+	"workbench.settings.enableNaturalLanguageSearch": false,
+	"breadcrumbs.enabled": false,
+
+	// ── Editor tabs ────────────────────────────────────────────
+	"workbench.editor.enablePreview": true,
+	"workbench.editor.highlightModifiedTabs": true,
+
+	// ── Explorer ───────────────────────────────────────────────
+	"explorer.compactFolders": false,
+	"explorer.confirmDelete": false,
+	"explorer.confirmDragAndDrop": false,
+	"explorer.autoReveal": false,
+	"explorer.sortOrder": "type",
+	"explorer.fileNesting.enabled": true,
+	"explorer.fileNesting.expand": false,
+	"explorer.copyRelativePathSeparator": "/",
+
+	// ── Editor: display & behavior ─────────────────────────────
+	"editor.minimap.enabled": false,
+	"editor.stickyScroll.enabled": true,
+	"editor.bracketPairColorization.enabled": true,
+	"editor.guides.bracketPairs": "active",
+	"editor.smoothScrolling": false,
+	"editor.cursorBlinking": "smooth",
+	"editor.occurrencesHighlight": "off",
+	"editor.inlayHints.enabled": "offUnlessPressed",
+	"editor.linkedEditing": true,
+	"editor.emptySelectionClipboard": false,
+	"editor.dragAndDrop": false,
+
+	// ── Editor: suggestions ────────────────────────────────────
+	"editor.wordBasedSuggestions": "off",
+	"editor.quickSuggestions": { "strings": "on" },
+
+	// ── Diff editor ────────────────────────────────────────────
+	"diffEditor.experimental.useTrueInlineView": false,
+
+	// ── Formatting ─────────────────────────────────────────────
+	"editor.defaultFormatter": "biomejs.biome",
+	"editor.formatOnSave": true,
+
+	// ── TS/JS — unified js/ts.* namespace (replaces typescript.*/javascript.* since early 2026)
+	"js/ts.updateImportsOnFileMove.enabled": "always",
+	"js/ts.updateImportsOnPaste.enabled": true,
+	"js/ts.tsserver.automaticTypeAcquisition.enabled": false,
+	"js/ts.tsserver.maxMemory": 4096,
+
+	// ── Files & watcher ────────────────────────────────────────
+	"files.exclude": {
+		"**/.git": true
+	},
+	"files.watcherExclude": {
+		"**/node_modules/**": true,
+		"**/dist/**": true,
+		"**/build/**": true,
+		"**/.git/objects/**": true
+	},
+
+	// ── Search ─────────────────────────────────────────────────
+	"search.exclude": {
+		"**/node_modules": true,
+		"**/dist": true,
+		"**/build": true
+	},
+	"search.followSymlinks": false,
+	"search.smartCase": true,
+
+	// ── Git ────────────────────────────────────────────────────
+	"git.openRepositoryInParentFolders": "never",
+	"git.autofetch": false,
+	"git.confirmSync": false,
+	"git.suggestSmartCommit": false,
+	"git.enableSmartCommit": false,
+
+	// ── Terminal & debug ───────────────────────────────────────
+	"terminal.integrated.smoothScrolling": false,
+	"debug.console.wordWrap": true,
+
+	// ── AI features (all disabled) ─────────────────────────────
+	"chat.disableAIFeatures": true,
+	"chat.titleBar.openInAgentsWindow.enabled": false,
+	"github.copilot.nextEditSuggestions.enabled": false,
+	"github.copilot.enable": {
+		"*": false,
+		"plaintext": false,
+		"markdown": false,
+		"scminput": false
+	},
+
+	// ── Telemetry & experiments ────────────────────────────────
+	"telemetry.telemetryLevel": "off",
+	"workbench.enableExperiments": false,
+	"redhat.telemetry.enabled": false,
+	"gitlens.telemetry.enabled": false,
+
+	// ── Updates & extensions ───────────────────────────────────
+	"update.mode": "manual",
+	"update.showReleaseNotes": false,
+	"extensions.autoUpdate": "off",
+	"extensions.autoCheckUpdates": false,
+	"extensions.ignoreRecommendations": true,
+	"npm.fetchOnlinePackageInfo": false,
+
+	// ── Security ───────────────────────────────────────────────
+	"security.workspace.trust.enabled": true,
+
+	// ── Extension-specific ─────────────────────────────────────
+	"eslint.notifyBadUsageOfEnvVars": false,
+
+	// ── JSON schema trusted domains ────────────────────────────
+	"json.schemaDownload.trustedDomains": {
+		"https://schemastore.azurewebsites.net/": true,
+		"https://raw.githubusercontent.com/microsoft/vscode/": true,
+		"https://raw.githubusercontent.com/devcontainers/spec/": true,
+		"https://www.schemastore.org/": true,
+		"https://json.schemastore.org/": true,
+		"https://json-schema.org/": true,
+		"https://developer.microsoft.com/json-schemas/": true,
+		"https://biomejs.dev": true
+	},
+	"editor.mouseStyle": "default"
+}
