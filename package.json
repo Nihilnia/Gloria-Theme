@@ -1,51 +1,38 @@
 {
 	"name": "gloria-theme",
-	"displayName": "Gloria Theme",
-	"description": "I will make everything better. Everything.",
-	"version": "1.0.4",
+	"displayName": "プロジェクト_Gloria",
+	"description": "Temet Nosce",
+	"version": "1.0.6",
+	"icon": "nihilZone.jpg",
 	"author": "Nihil",
 	"publisher": "Nihil",
-	"icon": "icon.jpg",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/Nihilnia/Gloria-Theme"
-	},
 	"engines": {
-		"vscode": "^1.33.0"
+		"vscode": "^1.60.0"
+	},
+	"scripts": {
+		"test": "node ./test/htmlGrandparents.test.js && node ./test/cssBraces.test.js"
 	},
 	"extensionKind": [
 		"ui"
-	],
-	"keywords": [
-		"retro",
-		"80s"
 	],
 	"categories": [
 		"Themes"
 	],
 	"activationEvents": [
-		"onCommand:gloria.enableGlow",
-		"onCommand:gloria.disableGlow"
+		"onStartupFinished",
+		"onLanguage:html",
+		"onLanguage:css"
 	],
 	"main": "./src/extension.js",
 	"contributes": {
 		"themes": [
 			{
-				"label": "Gloria Theme",
+				"label": "Gloria",
 				"uiTheme": "vs-dark",
 				"path": "./themes/gloria-color-theme.json"
 			}
 		],
-		"commands": [
-			{
-				"command": "gloria.enableGlow",
-				"title": "Gloria: Enable Glow"
-			},
-			{
-				"command": "gloria.disableGlow",
-				"title": "Gloria: Disable Glow"
-			}
-		],
+		"commands": [],
 		"configuration": {
 			"title": "Gloria",
 			"properties": {
@@ -57,14 +44,9 @@
 				"gloria.disableGlow": {
 					"type": "boolean",
 					"default": false,
-					"description": "Disable the glow effect, but show Gloria editor chrome updates"
+					"description": "Disable the glow effect, but show editor chrome updates"
 				}
 			}
 		}
-	},
-	"__metadata": {
-		"installedTimestamp": 1779695164251,
-		"targetPlatform": "undefined",
-		"size": 852290
 	}
 }

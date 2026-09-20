@@ -1,146 +1,68 @@
 (function () {
-  //====================================
-  // Theme replacement CSS (Glow styles)
-  //====================================
   const tokenReplacements = {
-    /* Red */
-    'fe4450': "color: #fff5f6; text-shadow: 0 0 2px #000, 0 0 10px #fc1f2c[NEON_BRIGHTNESS], 0 0 5px #fc1f2c[NEON_BRIGHTNESS], 0 0 25px #fc1f2c[NEON_BRIGHTNESS]; backface-visibility: hidden;",
-    /* Neon pink */
-    'ff7edb': "color: #f92aad; text-shadow: 0 0 2px #100c0f, 0 0 5px #dc078e33, 0 0 10px #fff3; backface-visibility: hidden;",
-    /* Yellow */
-    'fede5d': "color: #f4eee4; text-shadow: 0 0 2px #393a33, 0 0 8px #f39f05[NEON_BRIGHTNESS], 0 0 2px #f39f05[NEON_BRIGHTNESS]; backface-visibility: hidden;",
-    /* Green */
-    '72f1b8': "color: #72f1b8; text-shadow: 0 0 2px #100c0f, 0 0 10px #257c55[NEON_BRIGHTNESS], 0 0 35px #212724[NEON_BRIGHTNESS]; backface-visibility: hidden;",
-    /* Blue */
-    '36f9f6': "color: #fdfdfd; text-shadow: 0 0 2px #001716, 0 0 3px #03edf9[NEON_BRIGHTNESS], 0 0 5px #03edf9[NEON_BRIGHTNESS], 0 0 8px #03edf9[NEON_BRIGHTNESS]; backface-visibility: hidden;"
+    'fdfdfd': "color: #fdfdfd; text-shadow: 0 0 2px #393a33, 0 0 8px #ffffff[NEON_BRIGHTNESS], 0 0 25px #ffffff[NEON_BRIGHTNESS]; backface-visibility: hidden;",
+    'ff0000': "color: #ff0000; text-shadow: 0 0 2px #000000, 0 0 4px #ff0000[NEON_BRIGHTNESS], 0 0 6px #ff0000[NEON_BRIGHTNESS]; backface-visibility: hidden;",
+    'ff0001': "color: #ff0000; text-shadow: 0 0 2px #000000, 0 0 4px #ff0000[NEON_BRIGHTNESS], 0 0 6px #ff0000[NEON_BRIGHTNESS]; backface-visibility: hidden;",
+    '1e90ff': "color: #1e90ff; text-shadow: 0 0 2px #001716, 0 0 4px #1e90ff[NEON_BRIGHTNESS], 0 0 8px #1e90ff[NEON_BRIGHTNESS]; backface-visibility: hidden;"
   };
 
-  //=============================
-  // Helper functions
-  //=============================
-
-  /**
-   * @summary Check if the style element exists and that it has Gloria Theme color content
-   * @param {HTMLElement} tokensEl the style tag
-   * @param {object} replacements key/value pairs of colour hex and the glow styles to replace them with
-   * @returns {boolean}
-   */
-  const themeStylesExist = (tokensEl, replacements) => {
-    return tokensEl.innerText !== '' && 
-      Object.keys(replacements).some(color => {
-        return tokensEl.innerText.toLowerCase().includes(`#${color}`);
-      });
-  };
-
-  /**
-   * @summary Search and replace colours within a CSS definition
-   * @param {string} styles the text content of the style tag
-   * @param {object} replacements key/value pairs of colour hex and the glow styles to replace them with
-   * @returns 
-   */
   const replaceTokens = (styles, replacements) => Object.keys(replacements).reduce((acc, color) => {
-    const re = new RegExp(`color: #${color};`, 'gi');
+    const re = new RegExp(`color:\\s*#${color}[a-f0-9]{0,2}\\b;?`, 'gi');
     return acc.replace(re, replacements[color]);
   }, styles);
 
-  /**
-   * @summary Checks if a theme is applied, and that the theme belongs to the Gloria Theme family
-   * @returns {boolean}
-   */
   const usingGloria = () => {
-    const body = document.querySelector('body');
-    const gloriaTheme = body && body.className.match(/nihil-gloria-theme/i);
-    return !!gloriaTheme;
+    const appliedTheme = document.querySelector('[class*="theme-json"]');
+    const gloriaTheme = document.querySelector('[class*="gloria"]');
+    return appliedTheme && gloriaTheme;
   }
 
-  /**
-   * @summary Checks if the theme is Gloria Theme, and that the styles exist, ready for replacement
-   * @param {HTMLElement} tokensEl the style tag
-   * @param {object} replacements key/value pairs of colour hex and the glow styles to replace them with
-   * @returns 
-   */
-  const readyForReplacement = (tokensEl, tokenReplacements) => tokensEl 
-    ? (
-      // only init if we're using a Gloria Theme subtheme
-      usingGloria() &&         
-      // does it have content ?
-      themeStylesExist(tokensEl, tokenReplacements)
-    )
-    : false;
+  const initNeonDreams = (disableGlow) => {
+    if (!usingGloria()) return;
 
-  /**
-   * @summary Attempts to bootstrap the theme
-   * @param {boolean} disableGlow 
-   * @param {MutationObserver} obs 
-   */
-  const initNeonDreams = (disableGlow, obs) => {
-    const tokensEl = document.querySelector('.vscode-tokens-styles');
+    let allTokens = '';
+    const tokensEls = document.querySelectorAll('.vscode-tokens-styles');
+    tokensEls.forEach(el => {
+      allTokens += el.innerText;
+    });
 
-    if (!tokensEl || !readyForReplacement(tokensEl, tokenReplacements)) {
-      return;
+    let updatedThemeStyles = !disableGlow 
+      ? replaceTokens(allTokens, tokenReplacements) 
+      : allTokens;
+    
+    updatedThemeStyles = `${updatedThemeStyles}[CHROME_STYLES]`;
+
+    let styleTag = document.querySelector('#gloria-theme-styles');
+    if (!styleTag) {
+      styleTag = document.createElement('style');
+      styleTag.setAttribute("id", "gloria-theme-styles");
+      document.body.appendChild(styleTag);
     }
-
-    // Add the theme styles if they don't already exist in the DOM
-    if (!document.querySelector('#gloria-theme-styles')) {
-      const initialThemeStyles = tokensEl.innerText;
-      
-      // Replace tokens with glow styles
-      let updatedThemeStyles = !disableGlow 
-        ? replaceTokens(initialThemeStyles, tokenReplacements) 
-        : initialThemeStyles;
-      
-      /* append the remaining styles */
-      updatedThemeStyles = `${updatedThemeStyles}[CHROME_STYLES]`;
-  
-      const newStyleTag = document.createElement('style');
-      newStyleTag.setAttribute("id", "gloria-theme-styles");
-      newStyleTag.innerText = updatedThemeStyles.replace(/(\r\n|\n|\r)/gm, '');
-      document.body.appendChild(newStyleTag);
-      
-      console.log('Gloria: Glow initialised!');
-    }
-
-    // disconnect the observer because we don't need it anymore
-    if (obs) {
-      obs.disconnect();
-    }
+    styleTag.innerText = updatedThemeStyles.replace(/(\r\n|\n|\r)/gm, '');
   };
 
-  /**
-   * @summary A MutationObserver callback that attempts to bootstrap the theme and assigns a retry attempt if it fails
-   */
+  let observedTokens = new Set();
   const watchForBootstrap = function(mutationsList, observer) {
-    const tokensEl = document.querySelector('.vscode-tokens-styles');
-    if (readyForReplacement(tokensEl, tokenReplacements)) {
-      // If everything we need is ready, then initialise
-      initNeonDreams([DISABLE_GLOW], observer);
-    } else {
-      if (tokensEl) {
-        // sometimes VS code takes a while to init the styles content, so if there stop this observer and add an observer for that
-        if (observer) {
-          observer.disconnect();
-          observer.observe(tokensEl, { childList: true });
-        }
+    if (!usingGloria()) return;
+
+    const tokensEls = document.querySelectorAll('.vscode-tokens-styles');
+    tokensEls.forEach(el => {
+      if (!observedTokens.has(el)) {
+        observer.observe(el, { childList: true, characterData: true, subtree: true });
+        observedTokens.add(el);
       }
-    }
+    });
+
+    initNeonDreams([DISABLE_GLOW]);
   };
 
-  //=============================
-  // Start bootstrapping!
-  //=============================
-  // Grab body node
+  const headNode = document.querySelector('head');
   const bodyNode = document.querySelector('body');
+  const observer = new MutationObserver(watchForBootstrap);
   
-  // 1. Try to init immediately
-  const tokensEl = document.querySelector('.vscode-tokens-styles');
-  if (readyForReplacement(tokensEl, tokenReplacements)) {
-    initNeonDreams([DISABLE_GLOW]);
-  } else {
-    // 2. If not ready, use a mutation observer to check when we can bootstrap the theme
-    const observer = new MutationObserver(watchForBootstrap);
-    /* watch for both attribute and childList changes because, depending on 
-    the VS code version, the mutations might happen on the body, or they might 
-    happen on a nested div */
-    observer.observe(bodyNode, { attributes: true, childList: true });
-  }
+  if (headNode) observer.observe(headNode, { childList: true, subtree: true });
+  if (bodyNode) observer.observe(bodyNode, { attributes: true, childList: true });
+  
+  // Initial run
+  watchForBootstrap([], observer);
 })();
